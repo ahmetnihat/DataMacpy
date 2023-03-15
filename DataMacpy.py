@@ -118,4 +118,29 @@ def get_score(n_estimators, X, y):
     return scores.mean()
 
 
+def model_fit_and_predict(model, X_train, y_train, X_valid, y_valid):
+
+    """
+    Model seçimi için kullanılır.
+    karmaşıklık matrisi çizdirir ve tahminlerimizin üzerinde analiz yapabileceğimiz bir veri seti verir.
+    """
+    
+    model.fit(X_train, y_train)
+    preds = model.predict(X_valid)
+    
+    return create_pred_data(y_label, y_valid, preds, 1)
+
+
+
+def fast_model_select(model_list, X, y):
+    """
+    Liste şeklinde kıyaslama yapacağımız modellerimizi ve tüm verilerimizi alarak 3 çapraz doğrulama oluşturup
+    modellerin doğruluklarını döndürür.
+    """
+    
+    for i, model in enumerate(model_list):
+        scores = cross_val_score(model, X, y, scoring='accuracy', cv=3)
+        print(f"Model {i} Accuracy: %{scores.mean()*100}")
+
+
 print("DataMacpy Setup")
