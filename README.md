@@ -1,2 +1,3 @@
-# DataMacpy
- data and model manipulation library for machine learning
+## DataMacpy 📚
+
+Makine öğrenimi için kendi yazdığım fonksiyonları topladığım veri ve model işleme kitaplığımdır.
